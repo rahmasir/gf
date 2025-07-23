@@ -42,7 +42,7 @@ def push(
             feedback = f"Pushing branch ('{branch}') to current remote '{current_remote}'..."
         else:
             command.extend([current_remote, current_branch])
-            feedback = f"Pushing current branch ('{branch}') to current remote '{current_remote}'..."
+            feedback = f"Pushing current branch ('{current_branch}') to current remote '{current_remote}'..."
 
         typer.secho(feedback, fg=typer.colors.YELLOW)
         
