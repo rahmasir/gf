@@ -9,4 +9,3 @@ def hello():
     just Says hello
     """
     typer.secho('Hello World from gf assistant!', fg=typer.colors.GREEN, bold=True)
-
