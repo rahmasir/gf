@@ -6,7 +6,7 @@ app = typer.Typer()
 @app.callback(invoke_without_command=True)
 def hello():
     """
-    Says hello.
+    just Says hello
     """
-    print("Hello World!")
+    typer.secho('Hello World from gf assistant!', fg=typer.colors.GREEN, bold=True)
 
