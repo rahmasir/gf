@@ -1,7 +1,7 @@
 import typer
 from typing_extensions import Optional
 
-from git_flow.commands import hello, ac, pwd
+from git_flow.commands import hello, ac, pwd, push
 from git_flow.utils import check_git_installed
 from git_flow.menu import show_menu
 
@@ -10,6 +10,7 @@ app = typer.Typer()
 app.add_typer(hello.app, name="hello")
 app.add_typer(ac.app, name="ac")
 app.add_typer(pwd.app, name="pwd")
+app.add_typer(push.app, name="push")
 
 
 @app.callback(invoke_without_command=True)
