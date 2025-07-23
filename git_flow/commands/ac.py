@@ -16,6 +16,11 @@ def ac(message: Optional[str] = typer.Argument(None, help="The commit message.")
     commit_message = message if message is not None else DEFAULT_COMMIT_MESSAGE
 
     try:
+        status_result = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+        if not status_result.stdout:
+            typer.secho("No changes to commit. Working tree clean.", fg=typer.colors.YELLOW)
+            raise typer.Exit()
+        
         # Stage all files
         typer.secho("Staging all files...", fg=typer.colors.YELLOW)
         subprocess.run(["git", "add", "."], check=True, capture_output=True)
@@ -32,4 +37,5 @@ def ac(message: Optional[str] = typer.Argument(None, help="The commit message.")
         typer.secho(f"Error: Git command failed.", fg=typer.colors.RED, bold=True)
         typer.secho(f"Details: {error_message}", fg=typer.colors.RED)
         raise typer.Exit(code=1)
+
 
